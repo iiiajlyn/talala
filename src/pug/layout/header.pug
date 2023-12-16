@@ -1,23 +1,21 @@
 header.header
 	.container
-		button.header__burger.burger-header.btn.js-burger(type="button" aria-label="меню")
-			span.burger-header__line
-			span.burger-header__line
-			span.burger-header__line
+		a.header__logo(href=data.header.links.logo)
+			picture(
+				itemprop="image"
+			)
+				source(
+					srcset="./images/base/logo.webp, ./images/base/logo@2x.webp 2x"
+					type="image/webp"
+				)
+				img(alt="Логотип" width="92" height="58" src="./images/base/logo.png")
 		nav.header__menu
 			ul.header__list(itemscope itemtype="http://www.schema.org/SiteNavigationElement")
 				each object, key in data.header.menu
 					li.header__link.js-to-scroll(
-						data-scroll-to=object.scrollTo
+						href=object.url
 						data-link=key
-						itemprop="url"
 					)
 						!= object.name
-			.header__img
-				+lazyPicture({
-					src: `${baseDir}images/base/hourglass`,
-					alt: 'Время меню',
-					type: 'png',
-					retina: true,
-					webp: true
-				})
+
+		.header__info

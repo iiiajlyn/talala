@@ -8,17 +8,11 @@ $color-link: #2f80ed;
 
 // FONTS
 $font-primary:
-	"Redacted Script",
-	"SF Pro Display",
+	"Montserrat",
 	-apple-system,
-	blinkmacsystemfont,
-	"Segoe UI",
-	roboto,
 	oxygen,
 	ubuntu,
 	cantarell,
-	"Open Sans",
-	"Helvetica Neue",
 	sans-serif;
 $line-height-primary: 140%;
 $line-height-normal: normal;
@@ -36,4 +30,3 @@ $desktop-xl: 1800;
 $laptop: 1440;
 $tablet: 768;
 $mobile: 320;
-$desktop-vh: 750;

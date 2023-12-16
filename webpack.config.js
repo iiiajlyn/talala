@@ -4,8 +4,6 @@ const path = require('path');
 module.exports = {
 	entry: {
 		index: './src/js/index.js',
-		preloader: './src/js/components/preloader.js',
-		vendor: ['jquery', 'locomotive-scroll'],
 	},
 	output: {
 		path: path.resolve(__dirname, 'build/js'),
