@@ -282,13 +282,13 @@ html(class=html.classList)&attributes(html.attrs)
 		block styles
 			link(rel="stylesheet" type="text/css" href!=`${baseDir}css/${pageName}.css?v=${Date.now()}`)
 		block head-end
-	body(class=body.classList)&attributes(body.attrs)
+	body
 		block body-start
-		include ../components/preloader
-		.site(data-scroll-container)
+		.site
 			include _data
 			include header
 			block content
 			include footer
 		block scripts
+			script(async src!=`${baseDir}js/${pageName}.js?v=${Date.now()}`)
 		block body-end

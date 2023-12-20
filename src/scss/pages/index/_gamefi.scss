@@ -1,3 +1,59 @@
-.main {
+.gamefi {
+	@include background("../images/pages/index/screen_short-video");
+
 	display: flex;
+	justify-content: space-between;
+	height: calc(100vh - 98px);
+	min-height: 700px;
+	max-height: 1500px;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+
+	&__ico {
+		width: 64px;
+		height: 64px;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding-bottom: 120px;
+		width: 347px;
+		font-weight: 900;
+
+		&::before {
+			content: "";
+			display: block;
+			width: 100%;
+		}
+	}
+
+	&__title {
+		width: 347px;
+		font-size: $font-size_large;
+	}
+
+	&__social {
+		@include gap-row(20px);
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&__slogan {
+		font-weight: 700;
+		font-size: $font-size_medium;
+		line-height: $line-height_second;
+	}
+
+	&__registration {
+		@include gap-row(10px);
+
+		display: inline-flex;
+		flex-direction: column;
+		line-height: 28px;
+	}
 }

@@ -1,0 +1,42 @@
+/* stylelint-disable property-no-unknown */
+/* stylelint-disable order/properties-order */
+::-webkit-scrollbar-button {
+	width: 7px;
+	height: 7px;
+	background-image: url("");
+	background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar-track {
+	background-color: $color_background;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	box-shadow: 0 0 0 $color_background inset;
+	background-color: $color_font;
+}
+
+::-webkit-resizer {
+	width: 7px;
+	height: 7px;
+	background-image: url("");
+	background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+}
+
+html {
+	scrollbar-color: $color_font $color_background;
+	scrollbar-width: thin;
+	scrollbar-base-color: $color_background;
+	scrollbar-track-color: $color_background;
+	scrollbar-face-color: $color_font;
+	scrollbar-3dlight-color: $color_font;
+	scrollbar-highlight-color: $color_font;
+	scrollbar-arrow-color: $color_font;
+	scrollbar-shadow-color: $color_font;
+}

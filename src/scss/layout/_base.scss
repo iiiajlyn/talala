@@ -6,35 +6,23 @@
 
 html {
 	position: relative;
-	overflow-x: hidden;
 	min-height: 100vh;
 	box-sizing: border-box;
 	font-family: $font-primary;
+	color: $color_font;
 	scroll-behavior: smooth;
-
-	&.has-cursor,
-	&.has-cursor * {
-		// stylelint-disable-next-line
-		cursor: none !important;
-	}
-
-	&.is-lock-scroll,
-	&.is-lock-scroll body {
-		overflow: hidden;
-	}
 }
 
 body {
-	@include font-size-normal;
-
 	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
-	line-height: $line-height-primary;
+	font-size: $font-size_normal;
+	line-height: $line-height-normal;
 	text-decoration-skip: objects;
 	text-rendering: optimizeLegibility;
 	text-size-adjust: 100%;
 	-webkit-tap-highlight-color: transparent;
-	background-color: $color-white;
+	background-color: $color_background;
 }
 
 h1,
@@ -58,7 +46,7 @@ button {
 	cursor: pointer;
 
 	&:hover {
-		opacity: 0.8;
+		opacity: 0.7;
 	}
 }
 
@@ -135,29 +123,22 @@ strong {
 }
 
 .btn {
-	display: flex;
-	align-items: center;
+	display: inline-flex;
+	align-items: flex-start;
 	justify-content: center;
 	margin: 0;
 	border: 0;
-	padding: 0;
+	border-radius: 40px;
+	padding: 28px 40px;
+	font-weight: 700;
+	font-size: $font-size_btn;
 	text-align: center;
-	background-color: transparent;
+	background-color: $color_button;
 	transition:
 		opacity $duration-normal,
 		color $duration-normal,
 		background-color $duration-normal;
 	user-select: none;
-
-	&__content {
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		min-width: 100%;
-		color: currentColor;
-		transform: translateZ(0);
-	}
 }
 
 .link {
@@ -173,29 +154,45 @@ strong {
 	max-height: 50vh;
 }
 
+.container-xl {
+	position: relative;
+	z-index: 1;
+	margin: auto;
+	width: 100%;
+	max-width: $desktop-xl * 1px;
+}
+
 .container {
 	position: relative;
 	z-index: 1;
-	margin: 0 auto;
+	margin: auto;
 	width: 100%;
-	max-width: 1800px;
-}
-
-.row {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: auto;
-	gap: 20px;
+	max-width: 1122px;
 }
 
 .site {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh; // fallback
+	align-items: center;
+	margin: auto;
+	padding: 0 80px;
+	min-width: $desktop * 1px;
+	min-height: 100vh;
 	// stylelint-disable-next-line
 	min-height: var(--vh);
 }
 
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.accent {
+	color: $color_font-accent;
+}
 /* stylelint-disable */
 /*
 * Немедленно переместите любую анимацию в конечную точку, если пользователь установил свое устройство в положение "prefers reduced motion".

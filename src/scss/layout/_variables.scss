@@ -1,10 +1,13 @@
 // stylelint-disable scss/dollar-variable-empty-line-before
 
 // COLORS
-$color-black: #282a33;
-$color-white: #fafafa;
-$color-gray: #828282;
-$color-link: #2f80ed;
+$color_background: #140132;
+$color_background-accent: #7156fd33;
+$color_font: #fcfcfd;
+$color_font-accent: #01ffc2;
+$color_button: #7156fb;
+$color_link: #5e636e;
+$color_link-active: #01ffc2;
 
 // FONTS
 $font-primary:
@@ -14,8 +17,9 @@ $font-primary:
 	ubuntu,
 	cantarell,
 	sans-serif;
-$line-height-primary: 140%;
-$line-height-normal: normal;
+$line-height_primary: 33px;
+$line-height_second: 38px;
+$line-height_normal: normal;
 
 // EASING TRANSITIONS
 $duration-normal: 0.5s;
@@ -25,8 +29,23 @@ $easing-out: ease-out;
 $easing-in: ease-in;
 
 // Settings
-$desktop: 1025;
 $desktop-xl: 1800;
+$desktop: 1024;
 $laptop: 1440;
 $tablet: 768;
 $mobile: 320;
+$desktopNormal: "";
+$desktopRetina: "@2x";
+
+// Font-size
+$font-size_small: 16px;
+$font-size_normal: 18px;
+$font-size_medium: 26px;
+$font-size_large: 56px;
+$font-size_extra-large: 72px;
+$font-size_btn: 20px;
+
+@mixin gradient-quote {
+	background: linear-gradient(180deg, transparent 0%, rgba(255, 13, 255, 0.2) 100%);
+	background-color: rgba(113, 86, 251, 0.2);
+}

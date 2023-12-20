@@ -1,229 +1,159 @@
 .header {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	z-index: 500;
 	display: flex;
-	padding-right: env(safe-area-inset-right, 12px);
-	padding-left: env(safe-area-inset-left, 12px);
-	width: 100%;
-	transition: box-shadow 0s;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 0;
+	font-size: $font-size_small;
 
 	&__menu {
-		display: flex;
-
-		@include desktop {
-			justify-content: flex-end;
-		}
-
-		@include devices {
-			position: fixed;
-			left: 0;
-			top: 0;
-			z-index: 98;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: flex-start;
-			overflow: hidden;
-			overflow-y: auto;
-			margin: 0;
-			width: 100vw;
-			height: 100vh;
-			color: $color-black;
-			background-color: $color-white;
-			opacity: 0;
-			visibility: hidden;
-			transform: translateX(100%);
-			transition:
-				opacity $duration-normal,
-				transform $duration-normal,
-				visibility $duration-normal;
-			-webkit-overflow-scrolling: touch;
-		}
-
-		@include active {
-			opacity: 1;
-			visibility: visible;
-			transform: translateX(0);
-
-			.header__img {
-				display: inline;
-				text-align: center;
-			}
-		}
+		padding: 0 5px;
 	}
+}
 
-	&__img {
-		display: none;
-	}
+.header-menu {
+	&__row {
+		@include gap-column(36px);
 
-	&__list {
-		@include font-size(18px, 26px);
-
-		position: relative;
 		display: flex;
-		justify-content: flex-end;
-		font-weight: 700;
-		font-style: normal;
-		cursor: pointer;
-
-		@include desktop {
-			@include gap(30px);
-		}
-
-		@include devices {
-			@include gap(40px);
-
-			flex-direction: column;
-			align-items: flex-start;
-			padding: 40px;
-			padding-top: 60px;
-			width: 100%;
-			max-width: 600px;
-			text-align: center;
-		}
-	}
-
-	&__link {
-		position: relative;
-		display: flex;
-		align-items: center;
+		flex-wrap: wrap;
 		justify-content: center;
-		transition:
-			opacity $duration-normal,
-			color $duration-normal;
+	}
 
-		&::before {
-			content: "";
-			position: absolute;
-			z-index: -1;
-			width: 100px;
-			height: 0;
-			background-image: url("../images/base/navActive.svg");
-			background-position: center;
-			background-size: contain;
-			background-repeat: no-repeat;
-			opacity: 0;
-			transition: opacity $duration-normal;
-		}
+	&__item {
+		color: $color_link;
 
-		&:hover {
-			opacity: 0.7;
-		}
-
-		@include desktop {
-			@include active {
-				&::before {
-					left: -24px;
-					top: -112px;
-					width: 100px;
-					height: 190px;
-					opacity: 1;
-				}
-			}
-		}
-
-		@include devices {
-			display: flex;
-			justify-content: left;
-			margin: 0 auto;
-			padding: 0;
-			width: 100%;
+		&.active {
 			font-weight: 700;
-			line-height: $line-height-normal;
-
-			@include active {
-				&::before {
-					left: -5px;
-					top: -30px;
-					height: 70px;
-					opacity: 1;
-				}
-			}
-		}
-	}
-
-	&__burger {
-		@include desktop {
-			display: none;
-		}
-
-		@include devices {
-			position: relative;
-			z-index: 100;
-			display: flex;
-			flex-direction: column;
-			margin-left: auto;
-			padding: 30px 20px;
-		}
-	}
-
-	&.is-fixed {
-		position: fixed;
-
-		@include desktop {
-			padding-top: 20px;
-			padding-bottom: 20px;
-			box-shadow: 0 5px 15px rgba($color-black, 0.1);
-			background-color: rgba($color-white, 0.8);
-			transition: box-shadow $duration-normal;
-			backdrop-filter: blur(7px);
-
-			@include browser-ie {
-				background-color: $color-white;
-			}
-		}
-
-		@include devices {
-			align-items: center;
-		}
-	}
-
-	@include desktop {
-		padding: 0 150px;
-		padding-top: 100px;
-	}
-
-	@include devices {
-		position: fixed;
-		align-items: center;
-		padding-top: 0;
-
-		.container {
-			height: 0;
+			color: $color_link-active;
 		}
 	}
 }
 
-.burger-header {
-	&__line {
-		display: block;
-		margin: 3px 0;
-		width: 26px;
-		height: 2px;
-		color: $color-black;
-		background-color: currentColor;
-		transition:
-			opacity $duration-normal,
-			transform $duration-normal,
-			color $duration-normal;
+.header-info {
+	@include gap-column(20px);
+
+	display: flex;
+	align-items: center;
+
+	&__text {
+		display: flex;
+		flex-direction: column;
 	}
 
-	@include active {
-		.burger-header__line {
-			&:not(:first-child):not(:last-child) {
-				opacity: 0;
-				transform: scaleY(0);
-			}
+	&__name {
+		font-size: 8px;
+	}
 
-			&:first-child {
-				transform: translate(0, 8px) rotate(-45deg);
-			}
+	&__price {
+		position: relative;
+		font-weight: 700;
 
-			&:last-child {
-				transform: translate(0, -7px) rotate(45deg);
+		&.is-up {
+			padding-right: 8px;
+
+			&::after {
+				content: "";
+				position: absolute;
+				right: 0;
+				top: 0;
+				display: block;
+				width: 7px;
+				height: 100%;
+				background-image: url("../images/base/priceUp.svg");
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+		}
+
+		&.is-down {
+			padding-right: 8px;
+
+			&::after {
+				content: "";
+				position: absolute;
+				right: 0;
+				top: 0;
+				display: block;
+				width: 7px;
+				height: 100%;
+				background-image: url("../images/base/priceDown.svg");
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+		}
+	}
+
+	&__logo {
+		margin-right: 5.4px;
+
+		&.is-cheel {
+			@include sprite("ico_cheel");
+		}
+
+		&.is-lee {
+			@include sprite("ico_lee");
+		}
+	}
+
+	&__button {
+		border-radius: 30px;
+		padding: 12px 22px;
+		background-color: $color_background-accent;
+	}
+
+	&__ico-certik {
+		width: 132.5px;
+		height: 34px;
+	}
+
+	&__item {
+		display: flex;
+	}
+
+	&__locale {
+		appearance: none;
+		display: flex;
+		flex-direction: column;
+		outline: none;
+		border: none;
+		padding-right: 14px;
+		text-transform: uppercase;
+		color: $color_link;
+		background-image: url("../images/base/select.svg");
+		background-position: right;
+		background-repeat: no-repeat;
+		background-color: transparent;
+		cursor: pointer;
+
+		option {
+			color: $color_font;
+			background: $color_background;
+
+			&:checked {
+				color: $color_link;
+				background: $color_background;
+			}
+		}
+	}
+
+	&__language {
+		// display: none;
+
+		&.is-active {
+			display: inline-block;
+			order: 1;
+			padding-right: 14px;
+
+			&::after {
+				content: "";
+				position: absolute;
+				right: 0;
+				top: 0;
+				display: block;
+				width: 10px;
+				height: 100%;
 			}
 		}
 	}

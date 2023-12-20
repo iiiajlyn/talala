@@ -1,0 +1,30 @@
+.cheelee-team {
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	max-height: 785px;
+
+	&__text {
+		width: 365px;
+	}
+
+	&__img {
+		position: absolute;
+		right: -200px;
+		top: 0;
+		z-index: -1;
+		width: auto;
+		height: 100%;
+	}
+
+	&__title {
+		padding-bottom: 20px;
+		font-weight: 700;
+		font-size: $font-size_medium;
+		line-height: $line-height_second;
+	}
+
+	&__description {
+		line-height: $line-height_primary;
+	}
+}

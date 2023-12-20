@@ -1,21 +1,41 @@
-header.header
-	.container
-		a.header__logo(href=data.header.links.logo)
-			picture(
-				itemprop="image"
+header.header.container-xl
+	a.header__logo(href=data.header.links.logo)
+		picture(
+			itemprop="image"
+		)
+			source(
+				srcset="./images/base/logo.webp, ./images/base/logo@2x.webp 2x"
+				type="image/webp"
 			)
-				source(
-					srcset="./images/base/logo.webp, ./images/base/logo@2x.webp 2x"
-					type="image/webp"
-				)
-				img(alt="Логотип" width="92" height="58" src="./images/base/logo.png")
-		nav.header__menu
-			ul.header__list(itemscope itemtype="http://www.schema.org/SiteNavigationElement")
-				each object, key in data.header.menu
-					li.header__link.js-to-scroll(
-						href=object.url
-						data-link=key
-					)
+			img(alt="Логотип" width="92" height="58" src="./images/base/logo.png")
+
+	nav.header__menu.header-menu
+		ul.header-menu__row(itemscope itemtype="http://www.schema.org/SiteNavigationElement")
+			each object, key in data.header.menu
+				li.header-menu__item(class=object.class ? object.class : object.class )
+					a(href=object.url)
 						!= object.name
 
-		.header__info
+	.header__info.header-info
+		.header-info__item
+			i.header-info__logo.is-cheel
+			p.header-info__text
+				span.header-info__name
+					| CHEEL
+				span.header-info__price.is-up
+					| $8,00
+		.header-info__item
+			i.header-info__logo.is-lee
+			p.header-info__text
+				span.header-info__name
+					| LEE
+				span.header-info__price.is-down
+					| $8,00
+		.header-info__item
+			a.header-info__button(href="/")
+				+svg('ico_certik').header-info__ico-certik
+		.header-info__item
+			select.header-info__locale(name="locale")
+				option(value="es") es
+				option(value="en" selected) en
+				option(value="ru") ru

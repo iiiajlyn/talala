@@ -40,7 +40,11 @@
 
 @mixin text-border($color, $border, $ieColor, $width: 1px, $ieWidth: 1px) {
 	// stylelint-disable-next-line
-	text-shadow: ($ieWidth) ($ieWidth) $border, 0 0 $border, $width ($ieWidth) $border, 0 $width $border;
+	text-shadow:
+		($ieWidth) ($ieWidth) $border,
+		0 0 $border,
+		$width ($ieWidth) $border,
+		0 $width $border;
 	color: $ieColor;
 
 	@supports (-webkit-text-stroke: $width $border) {
@@ -67,6 +71,23 @@
 	// stylelint-disable-next-line media-feature-name-no-vendor-prefix
 	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 		@content;
+	}
+}
+
+@mixin background($url, $file: ".png") {
+	background-image: url($url + $desktopNormal + $file);
+
+	@supports (background-image: url($url + $desktopNormal + ".webp")) {
+		background-image: url($url + $desktopNormal + ".webp");
+	}
+
+	/* stylelint-disable-next-line order/order */
+	@include retina {
+		background-image: url($url + $desktopRetina + $file);
+
+		@supports (background-image: url($url + $desktopRetina + ".webp")) {
+			background-image: url($url + $desktopRetina + ".webp");
+		}
 	}
 }
 
